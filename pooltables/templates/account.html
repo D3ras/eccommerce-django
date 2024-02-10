@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+My Account | Smart Pooltables
+{% endblock %}
+
+{% block body %}
+
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="my-account-box-main">
+    <div class="container">
+        <div class="my-account-page">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>Account Information</h1>
+                    </div>
+                    <div class="title-left" id="profile">
+                        <h1 class="font-weight-bold"><i class="fas fa-user-circle pr-2"></i>Profile</h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12" style="margin-bottom:20px;">
+                            <div class="mb-4 ctr">
+                                <img src="{{profile.image.url}}" height="200px" alt="Image" style="border-radius: 25%;">
+                            </div>
+                            <div class="mb-2 ctr">
+                                <a href="/profile" class="btn hvr-hover cart mx-1" style="color:white">Update Profile</a>
+                                <a href="/changepassword" class="btn hvr-hover cart mx-1" style="color:white">Change Password</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-12" style="margin-bottom:20px;">
+                            <div class="display-4" style="margin-bottom:20px">
+                                {{customuser.first_name}} {{customuser.last_name}}
+                            </div>
+                            <div class="table-main table-responsive" style="margin-bottom:20px">
+                                <table class="table">
+                                    <tr>
+                                        <td>E-mail</td>
+                                        <td>{{customuser.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>+254 {{customuser.phone}}</td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>{{customuser.username}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Customer Since</td>
+                                        <td>{{customuser.date_joined}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

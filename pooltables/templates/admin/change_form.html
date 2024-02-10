@@ -1,0 +1,36 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <script>
+        (function($){
+            $(document).ready(function(){
+                function filterCategories(subcategoryId) {
+                    var categoryField = $('#id_category');
+                    var initialCategories = JSON.parse('{{ categories_json|escapejs }}');
+
+                    // Clear existing options
+                    categoryField.empty();
+
+                    // Filter categories based on the selected subcategory
+                    var filteredCategories = initialCategories.filter(function(category) {
+                        return category.fields.subcategory == subcategoryId;
+                    });
+
+                    // Add new options to the category field
+                    filteredCategories.forEach(function(category) {
+                        categoryField.append('<option value="' + category.pk + '">' + category.fields.name + '</option>');
+                    });
+                }
+
+                // Initial load without subcategory selection
+                filterCategories(null);
+
+                // Trigger the filtering on subcategory change
+                $('#id_subcategory').change(function() {
+                    filterCategories($(this).val());
+                });
+            });
+        })(django.jQuery);
+    </script>
+{% endblock %}

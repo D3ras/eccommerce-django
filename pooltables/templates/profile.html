@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+        <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-12 col-xl-8">
+                    <div class="card card-body bg-white border-light shadow-sm mb-4">
+                        <h2 class="h5 mb-4">Profile information</h2>
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                            <button type="submit" class="btn btn-primary">Save All</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-4">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="card border-light text-center p-0">
+                                <div class="profile-cover rounded-top"
+                                     data-background="/static/avatar.jpg"></div>
+                                <div class="card-body pb-5">
+                                    <img src="{{ profile.get_avatar }}"
+                                         class="user-avatar large-avatar rounded-circle mx-auto mt-n7 mb-4"
+                                         alt="Neil Portrait">
+                                    <h4 class="h3">{{ profile.user.username }}</h4>
+                                    <h5 class="font-weight-normal">
+                                        {{ request.user.email }}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card card-body bg-white border-light shadow-sm mb-4">
+                                <h2 class="h5 mb-4">Select profile photo</h2>
+                                <div class="d-xl-flex align-items-center">
+                                    <div class="file-field">
+                                        <div class="d-flex justify-content-xl-center ml-xl-3">
+                                            <div class="d-flex">
+                                                <span class="icon icon-md">
+                                                    <span class="fas fa-paperclip mr-3"></span>
+                                                </span>
+                                                <input name="avatar" type="file">
+                                                <div class="d-md-block text-left">
+                                                    <div class="font-weight-normal text-dark mb-1">Choose Image</div>
+                                                    <div class="text-gray small">JPG, GIF or PNG. Max size of 800K</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock content %}

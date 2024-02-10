@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load socialaccount %}
+<style>
+.p-3 m-3 {
+    
+}
+.goog {
+    align-items: center;
+    border-radius: 50px;
+    position: relative;
+    background-color: transparent;
+    border-color: transparent;
+    font-family: monospace;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+.reset {
+    border-radius: 50px;
+    background-color: transparent;
+    font-family: monospace;
+    border-color: transparent;
+     padding: 10px;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.reset:hover {
+    color: red;
+    olor: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.goog:hover {
+    olor: #fff;
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+.gog {
+
+    height: 50px;
+}
+.rset {
+
+    height: 50px;
+}
+</style>
+<div class="container">
+    <div class="p-3 m-3"  style="">
+        <div class="col-lg-5 rounded mx-auto border pt-4" >
+            <div class="text-center col">
+            
+                <img
+                src="{% get_media_prefix %}images/logo-icon.png" alt=""
+                class="" style="align-content: center; height: 150px; width: 200px;">
+            <hr>
+            </div>
+            <h3 class="alert alert-light rounded-pill" style="text-align:center;" >Login</h3>
+            <form action="/login" method="POST">
+                
+                {% csrf_token %}
+
+                {% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+                <!-- email -->
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input required type="email" name="email" id=""
+                    value="{{values.email}}" 
+                    class=" form-control-sm form-control" placeholder="abc@gmail.com">
+                </div>
+
+
+                <!-- password -->
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" 
+                    name="password" 
+                    id=""
+                     class="form-control form-control-sm" >
+                </div>
+<hr>
+                
+                <button type="submit" class="btn btn-sm btn-success col-lg-12" style="width:50%;border-radius:50px; margin-left: 25%;" >Login</button>
+               <hr>
+                <button type="submit" class="tn btn-sm btn-success col-lg-12" style="width:50%; border-radius:50px; margin-left: 25%;">reset your password</button>
+            <hr>
+            
+            
+                <a href="">
+                <button type="submit"  style=" margin-left: 30%;border-color: transparent;"></button>Sign in with Google</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

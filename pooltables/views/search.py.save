@@ -1,0 +1,28 @@
+from django.db.models import Q
+from django.shortcuts import render , redirect , HttpResponseRedirect
+from pooltables.models.product import Products
+from pooltables.models.category import Category
+from django.views import View
+
+def search_product(request):
+
+name = request.POST.get('name')
+price = request.POST.get('price')
+category = request.POST.get('category')
+description = request.POST.get('description')
+
+question_set = Products.objects.filter()
+
+if request.POST.get('name'):
+    question_set = question_set.filter(name__icontains = name)
+
+if request.POST.get('price'):
+    question_set = question_set.filter(price__icontains = price)
+
+if request.POST.get('category'):
+    question_set = question_set.filter(category_exact = category)
+
+if request.POST.get('description'):
+    question_set = question_set.filter(description_icontains = descrption)
+
+return render(request, 'pooltables/search-product.html', { 'searched': question_set})

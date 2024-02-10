@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content%}
+<!-- photos_gallery.html -->
+
+{% load gallery %}
+
+<html>
+   <style>
+        .container-b {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .photo {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+           .photo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .photo-header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .photo-header img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .photo-title {
+            font-weight: bold;
+        }
+        .photo-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+        }
+
+        .photo-actions button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .photo-actions button.like {
+            color: red;
+        }
+
+        .photo-actions button.like.liked {
+            color: #e74c3c;
+        }
+    </style>
+<body>
+    <div class="container-b">
+
+    <h1>Photos Gallery</h1>
+    {% for photo_path in photo_paths %}
+        <div class="photo">
+            <img src="{{ photo_path }}" alt="Photo">
+            <button class="like-btn" data-photo-id="{{ forloop.counter }}">Like</button>
+            <button class="review-btn" data-photo-id="{{ forloop.counter }}">Write a Review</button>
+            <select class="rating" data-photo-id="{{ forloop.counter }}">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+    </div>
+    {% endfor %}
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.like-btn').click(function(){
+                var photoId = $(this).data('photo-id');
+                // Implement AJAX for handling like functionality
+            });
+
+            $('.review-btn').click(function(){
+                var photoId = $(this).data('photo-id');
+                // Implement AJAX for handling review functionality
+            });
+
+            $('.rating').change(function(){
+                var photoId = $(this).data('photo-id');
+                var rating = $(this).val();
+                // Implement AJAX for handling rating functionality
+            });
+        });  
+  </script>
+</body>
+</html>
+{% endblock %}
