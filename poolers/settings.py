@@ -226,9 +226,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MPESA_CONFIG = {
 
-     'CONSUMER_KEY': 'wGdgXDxvou4AnOWF4rMZUvEdrrDlP9Gm',
-     'CONSUMER_SECRET': 'uTosQyqvMpeeS9MK', 
-     'HOST_NAME': '192.168.88.250', 
+     'CONSUMER_KEY': '',
+     'CONSUMER_SECRET': '', 
+     'HOST_NAME': '', 
      'PASS_KEY': '', 
      'SAFARICOM_API': 'https://sandbox.safaricom.co.ke', 
      'SHORT_CODE': '174379',
