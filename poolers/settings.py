@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'pwa',
     'categories.editor',
     'django_filters',
-    'ckeditor',
     'bootstrap5',
     'allauth',
     'allauth.account',
@@ -52,7 +51,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_api_key',
     'corsheaders',
-    'mpesa',
     'debug_toolbar',
 ]
 

@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from mpesa.urls import mpesa_urls
 from . import settings
 import debug_toolbar
 
@@ -27,7 +26,6 @@ urlpatterns = [
     path('', include('pwa.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('allauth.socialaccount.urls')),
-    path('mpesa/', include(mpesa_urls)),
     path('__debug__/', include(debug_toolbar.urls)),
 
 
