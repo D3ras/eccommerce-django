@@ -1,6 +1,3 @@
-Here’s an enhanced version of your README that feels more professional and developer-friendly while outlining your project clearly and attractively:
-
----
 
 # **Simple E-commerce Platform**
 
